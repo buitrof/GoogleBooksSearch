@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import BookContext from '../../utils/BookContext'
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -23,23 +22,23 @@ const useStyles = makeStyles({
 function Search() {
 
   const classes = useStyles();
+  const { input, handleSearchBook, handleInputChange } = useContext(BookContext)
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
+    <Container className={classes.root}>
+      <form>
         <Typography variant="h5" component="h2">
           Book Search
         </Typography>
-        <Typography variant="body2" component="p">
-          <br />
-          Book
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <TextField className={classes.search} label="Search for a book" variant="filled" />
-        <Button className={classes.button} size="small">Search</Button>
-      </CardActions>
-    </Card>
+        <TextField className={classes.search} 
+        label="Book Title" 
+        variant="filled"
+        name="input"
+        value={input}
+        onChange={handleInputChange}/>
+        <Button className={classes.button}  onClick={handleSearchBook} size="small">Search</Button>
+      </form>
+    </Container>
   );
 };
 
