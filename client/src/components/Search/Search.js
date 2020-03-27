@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    marginBottom: 20
+    marginBottom: 30
   },
   button: {
     float: "right"

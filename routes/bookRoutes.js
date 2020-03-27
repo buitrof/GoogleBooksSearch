@@ -9,7 +9,7 @@ router.get('/books', (req, res) => {
 
 router.post('/books', (req, res) => {
   Book.create(req.body)
-  .then(book => res.json(book))
+  .then(book => res.sendStatus(200))
   .catch(e => console.error(e))
 })
 
