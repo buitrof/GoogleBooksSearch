@@ -38,7 +38,7 @@ function App() {
 
   bookState.handleSearchBook = event => {
     event.preventDefault()
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookState.input}&key=${process.env.REACT_APP_KEY}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookState.input}&key=${process.env.REACT_APP_KEY || process.env.APP_KEY}`)
       .then(({ data: { items } }) => {
         let booksInfo = items.map(elem => elem.volumeInfo)
         setBookState({ ...bookState, input: '', searchBooks: booksInfo })
