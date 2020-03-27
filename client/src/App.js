@@ -10,6 +10,7 @@ import Results from './components/Results'
 import axios from 'axios';
 import Book from './utils/Book';
 import BookContext from './utils/BookContext';
+require('dotenv').config()
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
 
   bookState.handleSearchBook = event => {
     event.preventDefault()
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookState.input}&key=AIzaSyBZh-a4x_DWMuMSbODfA2Vh6fsls0dKA7E`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookState.input}&key=${process.env.REACT_APP_KEY}`)
       .then(({ data: { items } }) => {
         let booksInfo = items.map(elem => elem.volumeInfo)
         setBookState({ ...bookState, input: '', searchBooks: booksInfo })
