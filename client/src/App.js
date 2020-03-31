@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from 'react-router-dom';
-import Jumbotron from './components/Jumbotron';
-import Search from './components/Search'
-import Results from './components/Results'
-import axios from 'axios';
-import Book from './utils/Book';
-import BookContext from './utils/BookContext';
+} from 'react-router-dom'
+import Search from './components/views/Search'
+import Saved from './components/views/Saved'
+import Book from './utils/Book'
+import BookContext from './utils/BookContext'
+import axios from 'axios'
 require('dotenv').config()
 
 function App() {
@@ -67,22 +66,17 @@ function App() {
   return (
     <BookContext.Provider value={bookState}>
       <Router>
-        <div>
-          <h2>Google Books</h2>
-          <Switch>
-            <Route exact path="/">
-              <Jumbotron />
-              <Search />
-              <Results />
-            </Route>
-            <Route exact path="/saved">
-              <Jumbotron />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/">
+            <Search />
+          </Route>
+          <Route exact path="/saved">
+            <Saved />
+          </Route>
+        </Switch>
       </Router>
     </BookContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App
